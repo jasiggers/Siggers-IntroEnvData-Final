@@ -1,0 +1,101 @@
+---
+title: "SOCR 580 Assignment 1"
+author: "Alex Siggers"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(tidyverse)
+library(dataRetrieval)
+library(dygraphs)
+library(xts)
+```
+
+#Chapter 1: Introduction to RMarkdown through the Poudre
+
+# Methods
+
+The Poudre River at Lincoln Bridge is:
+
+  - Downstream of only a little bit of urban stormwater
+
+  - Near Odell Brewing CO
+  
+  - Near an open space area and the Poudre River Trail
+  
+  - **Downstream of many agricultral diversions**
+
+
+## SiteDescription
+
+![](https://waterdata.usgs.gov/nwisweb/local/state/co/text/pics/06752260big.jpg)
+
+## Data Acquisition and Plotting tests
+
+### Data Download
+
+
+```{r downloader}
+
+q <- readNWISdv(siteNumbers = '06752260',
+                parameterCd = '00060',
+                startDate = '2017-01-01',
+                endDate = '2022-01-01') %>%
+  rename(q = 'X_00060_00003')
+
+
+```
+
+
+
+### Static Data Plotter
+
+
+```{r, warning = FALSE, fig.width = 8, fig.height = 5}
+
+ggplot(q, aes(x = Date, y = q)) + 
+  geom_line() + 
+  ylab('Q (cfs)') + 
+  ggtitle('Discharge in the Poudre River, Fort Collins')
+
+```
+
+
+### Interactive Data Plotter
+
+
+```{r}
+
+q_xts <- xts(q$q, order.by = q$Date)
+
+
+dygraph(q_xts) %>%
+  dyAxis("y", label = "Discharge (cfs)")
+```
+
+
+
+# Assignment. 
+
+## DyGraph example. 
+
+```{r}
+
+dygraph(q_xts) %>%
+  dyAxis("y", label = "Discharge (cfs)") %>%
+  dyAxis("x", label = "Time")%>%
+   dyOptions(drawPoints = TRUE, pointSize = 2)
+```
+
+
+## Poudre Paragraph
+
+Colorado's Front Range would not be the same without the critical flow of the Cache la Poudre (*POO-der*) River. The headwaters begin high in the Rocky Mountains, initiating a 125-mile journey (https://poudreheritage.org/wp-content/uploads/poudremapgeneral-1.jpg) that drops an astounding **7,000 feet** of elevation on its way to the grasslands of northeastern Colorado. As with many of Colorado's major rivers, the 'Poudre' has played a crucial role in the development of agriculture, economy, recreation, and even water laws- more on this here (https://poudreheritage.org/water-war-and-law/). A ride up the Poudre River Canyon from Fort Collins will quickly reveal the impact that the river has had on the geology of the region. **Steep** drop-offs (https://coloradoencyclopedia.org/sites/default/files/Cache_la_Poudre_River_02.jpg) play host to numerous ecosystem types, and consequently, a variety of organisms including mountain mahogany, sagebrush, bighorn sheep, and even **mountain lions**. The importance of this river is difficult to overstate, so conservation of this beauty must remain a focal point of local communities' agendas. 
+
+

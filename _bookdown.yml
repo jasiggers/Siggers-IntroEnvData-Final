@@ -1,5 +1,7 @@
-book_filename: "bookdown-demo"
+book_filename: "IntroEnvDataScienceFinal"
 language:
   ui:
     chapter_name: "Chapter "
 delete_merged_file: true
+edit: https://github.com/jasiggers/siggers-introenvdata-final/edit/master/%s
+view: https://github.com/jasiggers/siggers-introenvdata-final/edit/master/%s
