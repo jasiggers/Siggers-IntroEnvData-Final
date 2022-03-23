@@ -12,4 +12,3 @@ github-repo: rstudio/Siggers-IntroEnvData-Final
 description: "This is a culmination of assignments completed throughout the semester"
 ---
 
-

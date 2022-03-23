@@ -13,7 +13,6 @@ description: "This is a culmination of assignments completed throughout the seme
 ---
 
 
-
 <!--chapter:end:index.Rmd-->
 
 ---
