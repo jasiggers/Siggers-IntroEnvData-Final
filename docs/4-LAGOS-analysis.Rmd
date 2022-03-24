@@ -13,7 +13,7 @@ knit: (function(input, ...) {
       output_dir='./'
 ---
 
-# Chapter 4: LAGOS Spatial Analysis Part One
+# LAGOS Spatial Analysis Part One
 
 
 ```{r LAGOS setup, include=FALSE}

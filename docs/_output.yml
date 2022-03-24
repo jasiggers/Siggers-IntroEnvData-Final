@@ -3,7 +3,8 @@ bookdown::gitbook:
   config:
     toc:
       before: |
-        <li><a href="./">IntroEnvironmentalDataScienceFinal</a></li>
+        <li><a href="./">Intro to Environmental Data Science Final</a></li>
       after: |
-        <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
-    edit: https://github.com/jasiggers/siggers-introenvdata-final/edit/master/%s
+        <li><a href="https://jasiggers.github.io/Siggers-IntroEnvData-Final/">View Github</a></li>
+    edit: https://github.com/jasiggers/siggers-introenvdata-final/edit/main/%s
+    view: https://github.com/jasiggers/siggers-introenvdata-final/main/%s

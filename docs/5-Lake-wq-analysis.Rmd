@@ -13,7 +13,7 @@ knit: (function(input, ...) {
       output_dir='./'
 ---
 
-# Chapter 5: LAGOS Water Quality Analysis Part 2
+# LAGOS Water Quality Analysis Part 2
 
 ```{r Lake setup, include=FALSE}
 library(tidyverse) # Tidy packages

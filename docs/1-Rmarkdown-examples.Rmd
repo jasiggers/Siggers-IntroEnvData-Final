@@ -8,7 +8,7 @@ output:
     toc_float: true
 ---
 
-# Chapter 1: Introduction to RMarkdown through the Poudre
+# Introduction to RMarkdown through the Poudre
 
 ```{r Poudre setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)

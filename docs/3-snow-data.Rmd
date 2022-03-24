@@ -12,7 +12,7 @@ knit: (function(input, ...) {
   })
 ---
 
-# Chapter 3: Snow Data Assignment for Web Scraping, Functions, & Iteration
+# Snow Data Assignment for Web Scraping, Functions, & Iteration
 
 ```{r Snow setup, echo=FALSE, warning=FALSE, include=FALSE}
 library(rvest)

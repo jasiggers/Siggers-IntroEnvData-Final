@@ -1,4 +1,4 @@
-chapter-1-introduction-to-rmarkdown-through-the-poudre
+introduction-to-rmarkdown-through-the-poudre
 methods
 sitedescription
 data-acquisition-and-plotting-tests
@@ -6,12 +6,12 @@ data-download
 static-data-plotter
 interactive-data-plotter
 assignment.
-chapter-2-hayman-fire-recovery
-chapter-3-snow-data-assignment-for-web-scraping-functions-iteration
-chapter-4-lagos-spatial-analysis-part-one
+hayman-fire-recovery
+snow-data-assignment-for-web-scraping-functions-iteration
+lagos-spatial-analysis-part-one
 in-class-work
-chapter-5-lagos-water-quality-analysis-part-2
+lagos-water-quality-analysis-part-2
 class-work
 why-might-this-be-the-case
-chapter-6-weather-crop-regressions
+weather-crop-regressions
 assignment
