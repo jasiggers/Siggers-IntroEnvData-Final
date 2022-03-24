@@ -1,0 +1,14 @@
+h1:in-class-work In-Class work
+h2:show-a-map-outline-of-iowa-and-illinois-similar-to-minnesota-map-upstream 1) Show a map outline of Iowa and Illinois (similar to Minnesota map upstream)
+h2:subset-lagos-data-to-these-sites-how-many-sites-are-in-illinois-and-iowa-combined-how-does-this-compare-to-minnesota 2) Subset LAGOS data to these sites, how many sites are in Illinois and Iowa combined? How does this compare to Minnesota?
+h2:what-is-the-distribution-of-lake-size-in-iowa-vs.-minnesota 3) What is the distribution of lake size in Iowa vs. Minnesota?
+h2:make-an-interactive-plot-of-lakes-in-iowa-and-illinois-and-color-them-by-lake-area-in-hectares 4) Make an interactive plot of lakes in Iowa and Illinois and color them by lake area in hectares
+h2:what-other-data-sources-might-we-use-to-understand-how-reservoirs-and-natural-lakes-vary-in-size-in-these-three-states 5) What other data sources might we use to understand how reservoirs and natural lakes vary in size in these three states?
+h1:class-work Class work
+h2:what-is-the-correlation-between-secchi-disk-depth-and-chlorophyll-a-for 1) What is the correlation between Secchi Disk Depth and Chlorophyll a for
+h2:why-might-this-be-the-case Why might this be the case?
+h2:what-states-have-the-most-data 2) What states have the most data?
+h3:a-first-you-will-need-to-make-a-lagos-spatial-dataset-that-has-the-total 2a) First you will need to make a lagos spatial dataset that has the total
+h3:b-second-you-will-need-to-join-this-point-dataset-to-the-us_boundaries 2b) Second, you will need to join this point dataset to the us_boundaries
+h3:c-then-you-will-want-to-group-by-state-and-sum-all-the-observations-in-that 2c) Then you will want to group by state and sum all the observations in that
+

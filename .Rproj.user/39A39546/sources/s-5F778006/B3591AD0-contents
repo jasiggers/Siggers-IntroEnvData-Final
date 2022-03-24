@@ -1,0 +1,28 @@
+--- 
+title: "Intro to Environmental Data Science Final"
+author: "Alex Siggers"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+output: bookdown::gitbook
+documentclass: book
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: yes
+github-repo: jasiggers/Siggers-IntroEnvData-Final
+description: "This is a culmination of assignments completed throughout the semester"
+---
+
+```{r include=FALSE}
+# automatically create a bib database for R packages
+knitr::write_bib(c(
+  .packages(), 'bookdown', 'knitr', 'rmarkdown'
+), 'packages.bib')
+options(dplyr.summarise.inform = FALSE)
+library(dplyr, warn.conflicts = FALSE)
+## clean bookdown  cache if needed
+# bookdown::clean_book(TRUE)
+# https://bookdown.org/yihui/bookdown/build-the-book.html
+```
+
+<!--chapter:end:index.Rmd-->
+

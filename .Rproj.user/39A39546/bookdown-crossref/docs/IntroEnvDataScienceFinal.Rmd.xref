@@ -1,0 +1,37 @@
+h1:methods Methods
+h2:sitedescription SiteDescription
+h2:data-acquisition-and-plotting-tests Data Acquisition and Plotting tests
+h3:data-download Data Download
+h3:static-data-plotter Static Data Plotter
+h3:interactive-data-plotter Interactive Data Plotter
+h1:assignment. Assignment.
+h2:dygraph-example. DyGraph example.
+h2:poudre-paragraph Poudre Paragraph
+h1:in-class-work In-Class work
+h2:show-a-map-outline-of-iowa-and-illinois-similar-to-minnesota-map-upstream 1) Show a map outline of Iowa and Illinois (similar to Minnesota map upstream)
+h2:subset-lagos-data-to-these-sites-how-many-sites-are-in-illinois-and-iowa-combined-how-does-this-compare-to-minnesota 2) Subset LAGOS data to these sites, how many sites are in Illinois and Iowa combined? How does this compare to Minnesota?
+h2:what-is-the-distribution-of-lake-size-in-iowa-vs.-minnesota 3) What is the distribution of lake size in Iowa vs. Minnesota?
+h2:make-an-interactive-plot-of-lakes-in-iowa-and-illinois-and-color-them-by-lake-area-in-hectares 4) Make an interactive plot of lakes in Iowa and Illinois and color them by lake area in hectares
+h2:what-other-data-sources-might-we-use-to-understand-how-reservoirs-and-natural-lakes-vary-in-size-in-these-three-states 5) What other data sources might we use to understand how reservoirs and natural lakes vary in size in these three states?
+h1:class-work Class work
+h2:what-is-the-correlation-between-secchi-disk-depth-and-chlorophyll-a-for 1) What is the correlation between Secchi Disk Depth and Chlorophyll a for
+h2:why-might-this-be-the-case Why might this be the case?
+h2:what-states-have-the-most-data 2) What states have the most data?
+h3:a-first-you-will-need-to-make-a-lagos-spatial-dataset-that-has-the-total 2a) First you will need to make a lagos spatial dataset that has the total
+h3:b-second-you-will-need-to-join-this-point-dataset-to-the-us_boundaries 2b) Second, you will need to join this point dataset to the us_boundaries
+h3:c-then-you-will-want-to-group-by-state-and-sum-all-the-observations-in-that 2c) Then you will want to group by state and sum all the observations in that
+h1:class-work-1 Class work
+h2:what-is-the-correlation-between-secchi-disk-depth-and-chlorophyll-a-for-sites-with-at-least-200-observations 1) What is the correlation between Secchi Disk Depth and Chlorophyll a for sites with at least 200 observations?
+h2:why-might-this-be-the-case-1 Why might this be the case?
+h2:what-states-have-the-most-data-1 2) What states have the most data?
+h3:a-first-you-will-need-to-make-a-lagos-spatial-dataset-that-has-the-total-number-of-counts-per-site. 2a) First you will need to make a lagos spatial dataset that has the total number of counts per site.
+h3:b-second-you-will-need-to-join-this-point-dataset-to-the-us_boundaries-data. 2b) Second, you will need to join this point dataset to the us_boundaries data.
+h3:c-then-you-will-want-to-group-by-state-and-sum-all-the-observations-in-that-state-and-arrange-that-data-from-most-to-least-total-observations-per-state. 2c) Then you will want to group by state and sum all the observations in that state and arrange that data from most to least total observations per state.
+h2:assignment Assignment
+h3:question-1a-extract-winneshiek-county-corn-yields-fit-a-linear-time-trend-make-a-plot.-is-there-a-significant-time-trend Question 1a: Extract Winneshiek County corn yields, fit a linear time trend, make a plot. Is there a significant time trend?
+h3:question-1b-fit-a-quadratic-time-trend-i.e.-year-year2-and-make-a-plot.-is-there-evidence-for-slowing-yield-growth Question 1b: Fit a quadratic time trend (i.e., year + year^2) and make a plot. Is there evidence for slowing yield growth?
+h3:question-2-time-series-lets-analyze-the-relationship-between-temperature-and-yields-for-the-winneshiek-county-time-series.-use-data-on-yield-and-summer-avg-tmax.-is-adding-year-or-tmax2-to-your-model-helpful-make-a-plot-and-interpret-the-results. Question 2 – Time Series: Let’s analyze the relationship between temperature and yields for the Winneshiek County time series. Use data on yield and summer avg Tmax. Is adding year or Tmax^2 to your model helpful? Make a plot and interpret the results.
+h3:question-3-cross-section-analyze-the-relationship-between-temperature-and-yield-across-all-counties-in-2018.-is-there-a-relationship-interpret-the-results. Question 3 – Cross-Section: Analyze the relationship between temperature and yield across all counties in 2018. Is there a relationship? Interpret the results.
+h3:question-4-panel-one-way-to-leverage-multiple-time-series-is-to-group-all-data-into-what-is-called-a-panel-regression.-convert-the-county-id-code-countyfp-or-county_ansi-into-factor-using-as.factor-then-include-this-variable-in-a-regression-using-all-counties-yield-and-summer-temperature-data.-how-does-the-significance-of-your-temperature-coefficients-tmax-tmax2-change-make-a-plot-comparing-actual-and-fitted-yields-and-interpret-the-results-of-your-model. Question 4 – Panel: One way to leverage multiple time series is to group all data into what is called a  regression. Convert the county ID code ( or ) into factor using as.factor, then include this variable in a regression using all counties’ yield and summer temperature data. How does the significance of your temperature coefficients (Tmax, Tmax^2) change? Make a plot comparing actual and fitted yields and interpret the results of your model.
+h3:question-5-soybeans-download-nass-data-on-soybean-yields-and-explore-either-a-time-series-relationship-for-a-given-county-the-cross-sectional-relationship-for-a-given-year-or-a-panel-across-all-counties-and-years. Question 5 – Soybeans: Download NASS data on soybean yields and explore either a time series relationship for a given county, the cross-sectional relationship for a given year, or a panel across all counties and years.
+

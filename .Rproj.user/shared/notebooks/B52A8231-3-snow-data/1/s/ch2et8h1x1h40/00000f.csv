@@ -1,0 +1,32 @@
+"0",""
+"0","#Grab only the name of the file by splitting out on forward slashes"
+"0","splits <- str_split_fixed(links,'/',8)"
+"0",""
+"0","#Keep only the 8th column"
+"0","dataset <- splits[,8] "
+"0",""
+"0","#generate a file list for where the data goes"
+"0","file_names <- paste0('./data/3-snow-data',dataset)"
+"0",""
+"0","for(i in 1:2){"
+"0","  download.file(links[i],destfile=file_names[i])"
+"0","}"
+"2","trying URL 'https://snowstudies.org/wp-content/uploads/2022/02/SBB_SASP_Forcing_Data.txt'
+"
+"2","Content type 'text/plain'"
+"2"," length 10167952 bytes (9.7 MB)
+"
+"2","downloaded 9.7 MB
+
+"
+"2","trying URL 'https://snowstudies.org/wp-content/uploads/2022/02/SBB_SBSP_Forcing_Data.txt'
+"
+"2","Content type 'text/plain'"
+"2"," length 10167952 bytes (9.7 MB)
+"
+"2","downloaded 9.7 MB
+
+"
+"0","downloaded <- file.exists(file_names)"
+"0",""
+"0","evaluate <- all(downloaded)"

@@ -1,0 +1,6 @@
+"0","# daily max temperature
+# dimensions: counties x days x years
+prism <- readMat(""data/6-Weather-corn-regression"")
+"
+"2","Error in file(con, open = ""rb"") : cannot open the connection
+"

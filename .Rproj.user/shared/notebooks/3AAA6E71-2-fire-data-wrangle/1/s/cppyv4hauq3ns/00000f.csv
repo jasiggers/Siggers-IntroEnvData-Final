@@ -1,0 +1,54 @@
+"0",""
+"0","#Reading in files"
+"0",""
+"0","files <- list.files('data/2-fire-data-wrangle',full.names=T)"
+"0",""
+"0",""
+"0","#Read in individual data files"
+"0","ndmi <- read_csv(files[1]) %>% "
+"0","  rename(burned=2,unburned=3) %>%"
+"0","  mutate(data='ndmi')"
+"1","[1m[1mRows: [1m[22m[34m[34m2103[34m[39m [1m[1mColumns: [1m[22m[34m[34m3[34m[39m
+"
+"1","[36m--[39m [1m[1mColumn specification[1m[22m [36m-------------------------------------------------------[39m
+[1mDelimiter:[22m "",""
+[32mdbl[39m  (2): NDWI (NIR/SWIR1) (Landsat 4/5/7/8 SR) at Polygon 1, 1984-01-01 to...
+[34mdate[39m (1): DateTime
+"
+"1","
+[36mi[39m Use [38;5;251m[48;5;235m[38;5;251m[48;5;235m`spec()`[48;5;235m[38;5;251m[49m[39m to retrieve the full column specification for this data.
+[36mi[39m Specify the column types or set [38;5;251m[48;5;235m[38;5;251m[48;5;235m`show_col_types = FALSE`[48;5;235m[38;5;251m[49m[39m to quiet this message.
+"
+"0","ndsi <- read_csv(files[2]) %>% "
+"0","  rename(burned=2,unburned=3) %>%"
+"0","  mutate(data='ndsi')"
+"1","[1m[1mRows: [1m[22m[34m[34m2103[34m[39m [1m[1mColumns: [1m[22m[34m[34m3[34m[39m
+"
+"1","[36m--[39m [1m[1mColumn specification[1m[22m [36m-------------------------------------------------------[39m
+[1mDelimiter:[22m "",""
+[32mdbl[39m  (2): NDSI (Landsat 4/5/7/8 SR) at Polygon 1, 1984-01-01 to 2019-08-15,...
+[34mdate[39m (1): DateTime
+"
+"1","
+[36mi[39m Use [38;5;251m[48;5;235m[38;5;251m[48;5;235m`spec()`[48;5;235m[38;5;251m[49m[39m to retrieve the full column specification for this data.
+[36mi[39m Specify the column types or set [38;5;251m[48;5;235m[38;5;251m[48;5;235m`show_col_types = FALSE`[48;5;235m[38;5;251m[49m[39m to quiet this message.
+"
+"0","ndvi <- read_csv(files[3])%>% "
+"0","  rename(burned=2,unburned=3) %>%"
+"0","  mutate(data='ndvi')"
+"1","[1m[1mRows: [1m[22m[34m[34m2102[34m[39m [1m[1mColumns: [1m[22m[34m[34m3[34m[39m
+"
+"1","[36m--[39m [1m[1mColumn specification[1m[22m [36m-------------------------------------------------------[39m
+[1mDelimiter:[22m "",""
+[32mdbl[39m  (2): NDVI (Landsat 4/5/7/8 SR) at Polygon 1, 1984-01-01 to 2019-08-15,...
+[34mdate[39m (1): DateTime
+"
+"1","
+[36mi[39m Use [38;5;251m[48;5;235m[38;5;251m[48;5;235m`spec()`[48;5;235m[38;5;251m[49m[39m to retrieve the full column specification for this data.
+[36mi[39m Specify the column types or set [38;5;251m[48;5;235m[38;5;251m[48;5;235m`show_col_types = FALSE`[48;5;235m[38;5;251m[49m[39m to quiet this message.
+"
+"0","# Stack as a tidy dataset"
+"0","full_long <- rbind(ndvi,ndmi,ndsi) %>%"
+"0","  gather(key='site',value='value',-DateTime,-data) %>%"
+"0","  filter(!is.na(value))"
+"0",""

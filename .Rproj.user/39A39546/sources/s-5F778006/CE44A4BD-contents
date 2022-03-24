@@ -8,10 +8,20 @@ documentclass: book
 bibliography: [book.bib, packages.bib]
 biblio-style: apalike
 link-citations: yes
-github-repo: rstudio/Siggers-IntroEnvData-Final
+github-repo: jasiggers/Siggers-IntroEnvData-Final
 description: "This is a culmination of assignments completed throughout the semester"
 ---
 
+```{r include=FALSE}
+# automatically create a bib database for R packages
+knitr::write_bib(c(
+  .packages(), 'bookdown', 'knitr', 'rmarkdown'
+), 'packages.bib')
+options(dplyr.summarise.inform = FALSE)
+library(dplyr, warn.conflicts = FALSE)
+## clean bookdown  cache if needed
+# bookdown::clean_book(TRUE)
+```
 
 <!--chapter:end:index.Rmd-->
 
@@ -25,7 +35,7 @@ output:
     toc_float: true
 ---
 
-```{r setup, include=FALSE}
+```{r Poudre setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 
 library(tidyverse)
