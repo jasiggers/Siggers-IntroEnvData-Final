@@ -21,5 +21,4 @@ options(dplyr.summarise.inform = FALSE)
 library(dplyr, warn.conflicts = FALSE)
 ## clean bookdown  cache if needed
 # bookdown::clean_book(TRUE)
-# https://bookdown.org/yihui/bookdown/build-the-book.html
 ```
