@@ -1,8 +1,4 @@
-h1:class-work Class work
-h2:what-is-the-correlation-between-secchi-disk-depth-and-chlorophyll-a-for-sites-with-at-least-200-observations 1) What is the correlation between Secchi Disk Depth and Chlorophyll a for sites with at least 200 observations?
+h1:lagos-water-quality-analysis-part-2 LAGOS Water Quality Analysis Part 2
+h2:class-work Class work
 h2:why-might-this-be-the-case Why might this be the case?
-h2:what-states-have-the-most-data 2) What states have the most data?
-h3:a-first-you-will-need-to-make-a-lagos-spatial-dataset-that-has-the-total-number-of-counts-per-site. 2a) First you will need to make a lagos spatial dataset that has the total number of counts per site.
-h3:b-second-you-will-need-to-join-this-point-dataset-to-the-us_boundaries-data. 2b) Second, you will need to join this point dataset to the us_boundaries data.
-h3:c-then-you-will-want-to-group-by-state-and-sum-all-the-observations-in-that-state-and-arrange-that-data-from-most-to-least-total-observations-per-state. 2c) Then you will want to group by state and sum all the observations in that state and arrange that data from most to least total observations per state.
 

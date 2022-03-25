@@ -1,0 +1,197 @@
+# Snow Data Assignment for Web Scraping, Functions, & Iteration
+
+```{r Snow setup, echo=FALSE, warning=FALSE, include=FALSE}
+library(rvest)
+library(tidyverse)
+library(lubridate)
+library(readxl)
+
+```
+
+
+1) Extract the meteorological data URLs. Here we want you to use the `rvest` package to get the URLs for the `SASP forcing` and `SBSP_forcing` meteorological datasets.
+
+```{r, include=FALSE}
+site_url <- 'https://snowstudies.org/archived-data/'
+
+#Read the web url
+webpage <- read_html(site_url)
+
+#Extract only weblinks and then the URLs!
+links <- webpage %>%
+  html_nodes('a') %>%
+  .[grepl('forcing',.)] %>%
+  html_attr('href')
+
+links
+```
+
+
+2) Download the meteorological data. Use the `download_file` and `str_split_fixed` commands to download the data and save it in your data folder. You can use a for loop or a map function. 
+
+```{r, include=FALSE}
+
+#Grab only the name of the file by splitting out on forward slashes
+splits <- str_split_fixed(links,'/',8)
+
+#Keep only the 8th column
+dataset <- splits[,8] 
+
+#generate a file list for where the data goes
+file_names <- paste0('./data/3-snow-data',dataset)
+
+for(i in 1:2){
+  download.file(links[i],destfile=file_names[i])
+}
+
+downloaded <- file.exists(file_names)
+
+evaluate <- all(downloaded)
+```
+
+
+3) Write a custom function to read in the data and append a site column to the data.
+
+```{r, include=FALSE}
+
+# this code grabs the variable names from the metadata pdf file
+library(pdftools)
+headers <- pdf_text('https://snowstudies.org/wp-content/uploads/2022/02/Serially-Complete-Metadata-text08.pdf') %>%
+  readr::read_lines(.) %>%
+  trimws(.) %>%
+  str_split_fixed(.,'\\.',2) %>%
+  .[,2] %>%
+  .[1:26] %>%
+  str_trim(side = "left")
+
+headers
+
+#This function will be utilized in a map function to read in data
+#Altered to create a df from table (read.delim)
+meteor_reader <- function(file){
+  name=str_split_fixed(file,'_',2)[,2] %>%
+    gsub('_Forcing_Data.txt','',.)
+  df <- read.delim(file[1], header=F, sep="", skip=4, col.names=headers) %>%
+  mutate(site=name)
+}
+
+
+```
+
+4) Use the `map` function to read in both meteorological files. Display a summary of your tibble.
+
+```{r, echo=FALSE, include=FALSE}
+#Reading in both files using map_dfr and previous function
+meteor_files = file_names
+
+meteor_full_data = map_dfr(meteor_files, meteor_reader)
+
+#Keeping only columns necessary for downstream
+meteor_updated = select(meteor_full_data, 1:4, 7, 10, 27)
+
+#Converting to tibble
+as_tibble(meteor_updated)
+```
+
+
+```{r, echo=FALSE, include=TRUE}
+summary(meteor_updated)
+```
+
+
+5) Make a line plot of mean temp by year by site (using the `air temp [K]` variable). Is there anything suspicious in the plot? Adjust your filtering if needed.
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+#Creating a df of temp avgs by year and site
+plotting_data = meteor_updated %>%
+  group_by(year, site) %>%
+  summarize(mean_temp = mean(air.temp..K.))
+
+
+#Plotting full span of 2003-2011 temp avgs by site
+ggplot(plotting_data, aes(x=year, y=mean_temp, color=site)) +
+  geom_line()+
+  scale_x_continuous(breaks = seq(2003, 2011, by=1)) +
+  xlab("Year")+
+  ylab("Mean Temp (K)")+
+  ggtitle("SASP & SBSP Temp Comparison ('03-'11)") +
+  theme(plot.title = element_text(hjust = 0.5))
+```
+
+##The temperature increases dramatically from the starting year (2003) and begins to level off & fluctuate closer to 2005. This is most likely due to the 2003 data being partial and only including winter temperatures. By filtering out 2003 and 2004, we can expect a more concise y-axis and remove outliers. 
+
+```{r, echo=FALSE}
+#Creating new plot w/o 2003 & 2004
+ggplot(plotting_data[5:18,], aes(x=year, y=mean_temp, color=site)) +
+  geom_line()+
+  scale_x_continuous(breaks = seq(2005, 2011, by=1)) +
+  xlab("Year")+
+  ylab("Mean Temp (K)")+
+  ggtitle("SASP & SBSP Temp Comparison ('05-'11)") +
+  theme(plot.title = element_text(hjust = 0.5))
+```
+
+##The updated graph gives a far less skewed insight into the temperature range of a seven-year span. Temperatures fluctuate between a ~3 K threshold. No more visible anomalies.
+
+
+6) Write a function that makes line plots of monthly average temperature at each site for a given year. Use a for loop to make these plots for 2005 to 2010. Are monthly average temperatures at the Senator Beck Study Plot ever warmer than the Snow Angel Study Plot?
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+#Creating a df of year, month, site, temp avgs (No longer necessary)
+month_plotting_data = meteor_updated %>%
+  group_by(year, month, site) %>%
+  summarise(mean_temp = mean(air.temp..K.))
+
+#Generating the function
+month_plot_func = function(yr, meteor_updated){
+  #Consolidating df by site, month, and mean temp
+  plot_data = meteor_updated %>%
+    filter(year == yr) %>%
+    group_by(month, site) %>%
+    summarise(mean_temp = mean(air.temp..K., na.rm=T))
+  
+  #Creating object to plot by month and site
+  x = ggplot(plot_data, aes(x=month, y=mean_temp, group=site)) +
+    geom_line(aes(color=site)) +
+    xlab("Month") +
+    ylab("Mean Air Temp (K)") + 
+    theme_classic() +
+    labs(title=as.character(yr)) +
+    theme(legend.position=c(0.8,0.8)) +
+    theme(plot.title = element_text(hjust = 0.5))
+  print(x)
+}
+
+#Last loop failed, using 2005-2010 to loop
+for(i in c(2005:2010)){
+  month_plot_func(i,meteor_updated)
+  }
+
+```
+
+##The graphs display a consistently higher temperature in the Snow Angel Study Plot, although the Senator Beck Study Plot remains fairly close and mimics the curvature. The Senator Beck Study Plot is colder every year and month on average.  
+
+
+
+Bonus) Make a plot of average daily precipitation by day of year (averaged across all available years). Color each site.
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+daily_data = meteor_updated %>%
+  group_by(site, day) %>%
+  summarise(mean_precip = mean(precip..kg.m.2.s.1., na.rm=T))
+
+
+ggplot(daily_data, aes(x=day, y=mean_precip, color=site)) +
+  geom_line() +
+    xlab("Day of Month") +
+    ylab("Mean Precip (Kg*m2*s)") + 
+    theme_classic() +
+    ggtitle("Precip Comp by Day (All Years)") +
+    theme(legend.position=c(0.8,0.8)) +
+    theme(plot.title = element_text(hjust = 0.5))
+
+```
+
+##The average daily precipitation appears to be identical at both sites, but I could have made an error in summarizing and averaging the precipitation values. Either way, there does not appear to be any notable difference between the daily values at the two sites. 
+
+

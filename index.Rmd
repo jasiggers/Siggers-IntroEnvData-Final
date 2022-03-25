@@ -11,6 +11,9 @@ link-citations: yes
 github-repo: jasiggers/Siggers-IntroEnvData-Final
 description: "This is a culmination of assignments completed throughout the semester"
 ---
+# Introduction {-} 
+
+This is a combination of all of the assignments completed during the Spring 2022 semester for the SOCR 580 A7 course, Intro to Environmental Data Science course.
 
 ```{r include=FALSE}
 # automatically create a bib database for R packages
